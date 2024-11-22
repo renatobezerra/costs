@@ -2,17 +2,42 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html,
+body,
+#root {
+  background-color: #efefef;
+  height: 100%;
+}
+
+/* *,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+* {
   font-family: "Open Sans", "Segoe UI", "Menlo";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   background-color: #efefef;
-  height: 100%; 
+  height: 100%;
+  font-size: 100%;
+  list-style-type: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
