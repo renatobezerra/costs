@@ -1,13 +1,12 @@
 import styles from "./Container.module.css";
-import Footer from "./Footer";
 
 function Container(props) {
+  const customClasses =   props.customClass?.split(' ').map(cl => styles[cl]).join(' ');
   return (
     <>
-      <div className={`${styles.container} ${styles[props.customClass]}`}>
+      <div className={`${styles.container} ${customClasses}`}>
         {props.children}
       </div>
-      <Footer />
     </>
   );
 }
