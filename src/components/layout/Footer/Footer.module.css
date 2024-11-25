@@ -14,6 +14,7 @@
 .footer .socialList li {
   margin: 0 0.5em;
   font-size: 1.7em;
+  transition: 0.5s;
 }
 
 .footer .socialList li:hover {

@@ -21,6 +21,7 @@
   text-decoration: none;
   padding: 33px 20px;
   font-weight: bolder;
+  transition: 0.5s;
 }
 
 .navbar .list .item a:hover {

@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -10,9 +10,9 @@ body,
 #root {
   background-color: #efefef;
   height: 100%;
-}
+} */
 
-/* *,
+*,
 *:after,
 *:before {
   margin: 0;
@@ -40,4 +40,35 @@ body,
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-} */
+}
+
+
+/* Define a animação */
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes flipR {
+  100% {
+    transform: rotateY(0deg);
+  }
+  0% {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Estilo para a imagem */
+.animate.flip-h {
+  display: inline-block;
+  animation: flipR 1s forwards; /* dispara novamente no hover */
+}
+
+/* Ativação ao hover (opcional) */
+.animate.flip-h:hover {
+  animation: flip 1s forwards; /* dispara novamente no hover */
+}
