@@ -3,6 +3,11 @@ import styles from './ProjectCard.module.css';
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
 
 function ProjectCard({ id, name, budget, category, handleRemove }) {
+  function remove (e) {
+    e.preventDefault();
+    handleRemove(id);
+  }
+
   return (
     <div className={styles.projectCard}>
       <div className={styles.name}>
@@ -19,7 +24,7 @@ function ProjectCard({ id, name, budget, category, handleRemove }) {
           <Link to="/">
             <BsPencil /> Editar
           </Link>
-          <button>
+          <button onClick={remove}>
             <BsFillTrashFill /> Excluir
           </button>
         </p>

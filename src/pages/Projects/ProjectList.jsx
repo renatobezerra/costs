@@ -8,9 +8,11 @@ import { useLocation } from 'react-router-dom';
 import styles from './ProjectList.module.css';
 
 function ProjectList() {
+  const location = useLocation();
   const [projects, setProjects] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [removeLoading, setRemoveLoading] = useState(false);
+  const [projectMessage, setProjectMessage] = useState('');
 
   useEffect(() => {
     const loadData = async () => {
@@ -35,7 +37,24 @@ function ProjectList() {
     loadData();
   });
 
-  const location = useLocation();
+  useEffect(() => {
+    setProjectMessage(location?.state?.message);
+  }, [location]);
+
+  function removeProject(id) {
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json(0))
+      .then(data => {
+        setProjects(projects.filter(p => p.id !== data.id));
+        setProjectMessage('Project was removed successfully !!!');
+      })
+      .catch(err => console.log(err));
+  }
 
   return (
     <div className={styles.projectContainer}>
@@ -44,7 +63,7 @@ function ProjectList() {
         <LinkButton to="/project/new" text="Criar Projeto" />
       </div>
       <div>
-        <Message type='success' message={location?.state?.message}/>
+        <Message type='success' message={projectMessage}/>
         <Message type='error' message={errorMessage}/>
       </div>
       <Container customClass="start">
@@ -57,6 +76,7 @@ function ProjectList() {
                 budget={project.budget}
                 category={project.category.name}
                 key={project.id}
+                handleRemove={removeProject}
                 />
             ))
           )
