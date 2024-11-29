@@ -4,6 +4,7 @@ import { BsPlus } from 'react-icons/bs';
 import styles from './ServiceList.module.css';
 import Modal from '../../components/layout/Modal/Modal';
 import ServiceForm from './ServiceForm';
+import ServiceRow from './ServiceRow';
 
 function ServiceList({ projectData }) {
   const [services, setServices] = useState(projectData.services ?? [])
@@ -57,13 +58,14 @@ function ServiceList({ projectData }) {
   }
 
   function validCosts(_service) {
-    let totalCost = services.reduce((acc, s) => {
+    let currentTotalCost = services.reduce((acc, s) => {
       acc+= s.cost;
       return acc;
     }, 0);
 
-    if(totalCost + _service.cost > projectData.budget) {
-      return `Budget exceeded in $${(totalCost + _service.cost) - projectData.budget}`;
+    let newCost = currentTotalCost + parseFloat(_service.cost);
+    if(newCost > projectData.budget) {
+      return `Budget exceeded in $${newCost - projectData.budget}`;
     }
 
     return;
@@ -76,10 +78,11 @@ function ServiceList({ projectData }) {
         <button type="button" className={styles.default} onClick={toogleFormAddService} ><BsPlus /> Add Service</button>
       </div>
       <hr/>
-      <p>Items</p>
       {
         services?.length > 0 ? (
-          services?.map(s => ( <p key={s.id}>{ s.name }</p> ))
+          services?.map(s => (
+            <ServiceRow key={s.id} item={s} />
+          ))
         ) : (
           <p>No items :(</p>
         )

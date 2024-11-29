@@ -75,3 +75,41 @@ code {
 .animate.flip-h:hover {
   animation: flip 1s forwards; /* dispara novamente no hover */
 }
+
+
+/* Buttons */
+.btn {
+  font-size: 100%;
+  padding: 0.5em 1em;
+  transition: 0.5s;
+  border: none;
+  margin: 0 2px;
+}
+
+.btn.default {
+  background-color: #999;
+  color: #FFF;
+}
+
+.btn.default svg path {
+  color: #FFF;
+}
+
+.btn.default:hover {
+  background-color: #A5A5A5;
+  cursor: pointer;
+}
+
+.btn.danger {
+  background-color: #F66;
+  color: #FFF;
+}
+
+.btn.danger svg path {
+  color: #FFF;
+}
+
+.btn.danger:hover {
+  background-color: #F99;
+  cursor: pointer;
+}
