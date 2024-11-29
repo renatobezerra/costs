@@ -1,6 +1,7 @@
 import styles from "./ServiceForm.module.css";
 import Input from "../../components/form/Input";
 import Message from "../../components/layout/Message/Message";
+import Label from "../../components/form/Label";
 
 function ServiceForm({ handleChange, errorMessage }) {
   function submit(e) {
@@ -30,7 +31,7 @@ function ServiceForm({ handleChange, errorMessage }) {
         keys="cost"
         type="number"
         name="cost"
-        text="Cost"
+        text="Cost ($)"
         placeholder="Type the service cost"
         handleOnChange={handleChange}
       />

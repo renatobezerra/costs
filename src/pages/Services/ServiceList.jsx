@@ -1,4 +1,4 @@
-import { parse, v4 as uuidv4  } from 'uuid';
+import { v4 as uuidv4  } from 'uuid';
 import { useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import styles from './ServiceList.module.css';
@@ -20,6 +20,12 @@ function ServiceList({ projectData }) {
 
     if(!validService(service)) {
       setFormErrorMessage('Invalid services infos');
+      return;
+    }
+
+    let validCostsMessage = validCosts(service);
+    if(!!validCostsMessage) {
+      setFormErrorMessage(validCostsMessage);
       return;
     }
 
@@ -48,6 +54,19 @@ function ServiceList({ projectData }) {
     }
 
     return result;
+  }
+
+  function validCosts(_service) {
+    let totalCost = services.reduce((acc, s) => {
+      acc+= s.cost;
+      return acc;
+    }, 0);
+
+    if(totalCost + _service.cost > projectData.budget) {
+      return `Budget exceeded in $${(totalCost + _service.cost) - projectData.budget}`;
+    }
+
+    return;
   }
 
   return (
