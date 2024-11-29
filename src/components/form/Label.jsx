@@ -1,8 +1,8 @@
 import styles from "./Label.module.css";
 
-function Label({ text, value }) {
+function Label({ text, value, type='column' }) {
   return (
-    <div className={styles.formControl}>
+    <div className={`${styles.formControl} ${styles[type] ?? ''}`}>
       <label htmlFor={text}>{text}:</label>
       <span>{value}</span>
     </div>

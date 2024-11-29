@@ -1,0 +1,23 @@
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.default {
+  font-size: 100%;
+  padding: 0.5em 1em;
+  transition: 0.5s;
+  background-color: #999;
+  color: #FFF;
+  border: none;
+  margin: 0 2px;
+}
+
+.default svg path {
+  color: #FFF;
+}
+
+.default:hover {
+  background-color: #A5A5A5;
+  cursor: pointer;
+}

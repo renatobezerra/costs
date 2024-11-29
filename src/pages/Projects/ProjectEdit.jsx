@@ -13,6 +13,13 @@ function ProjectEdit() {
   const [project, setProject] = useState({});
 
   function update(project) {
+    project.budget = parseFloat(project.budget);
+
+    if(project.budget < project.cost) {
+      setError(`The budget cannot be less than costs`);
+      return;
+    }
+
     fetch(`http://localhost:5000/projects/${project.id}`, {
       method: 'PATCH',
       headers: {

@@ -18,3 +18,11 @@
 .formControl input::placeholder {
   color: #7b7b7b;
 }
+
+.row {
+  flex-direction: row !important;
+}
+
+.row label {
+  margin-right: 10px !important;
+}

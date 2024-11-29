@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Company from "./pages/Company/Company";
 import Contact from "./pages/Contact/Contact";
 import ProjectNew from "./pages/Projects/ProjectNew";
+import ProjectView from "./pages/Projects/ProjectView";
 import ProjectEdit from "./pages/Projects/ProjectEdit";
 import ProjectList from "./pages/Projects/ProjectList";
 
@@ -21,7 +22,8 @@ function App() {
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/project" element={<ProjectList />} />
           <Route exact path="/project/new" element={<ProjectNew />} />
-          <Route exact path="/project/:id" element={<ProjectEdit />} />
+          <Route exact path="/project/view/:id" element={<ProjectView />} />
+          <Route exact path="/project/edit/:id" element={<ProjectEdit />} />
         </Routes>
       </Container>
       <Footer />
