@@ -8,7 +8,7 @@ function ProjectNew() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
-  function createPost(project){
+  function create(project){
     // Initialize costs and services
     project.cost = 0;
     project.services = []
@@ -43,9 +43,10 @@ function ProjectNew() {
         )
       }
       <div className={styles.projectNewContainer}>
-        <h1>New Project</h1>
-        <p>Crie seu projeto. Após, será possível incluir serviços</p>
-        <ProjectForm handleSubmit={createPost} btnText="Create" />
+        <h2>New Project</h2>
+        <hr />
+        <p>Create your project. You will be able to include services afterward</p>
+        <ProjectForm handleSubmit={create} btnSave="Create" btnBack="Back" />
       </div>
     </>
   );

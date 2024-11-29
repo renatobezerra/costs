@@ -16,7 +16,7 @@ function ProjectList() {
 
   useEffect(() => {
     const loadData = async () => {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // await new Promise(resolve => setTimeout(resolve, 2000));
 
       fetch('http://localhost:5000/projects', {
         method: 'GET',
@@ -39,6 +39,7 @@ function ProjectList() {
 
   useEffect(() => {
     setProjectMessage(location?.state?.message);
+    window.history.replaceState({}, '');
   }, [location]);
 
   function removeProject(id) {
@@ -60,7 +61,7 @@ function ProjectList() {
     <div className={styles.projectContainer}>
       <div className={styles.titleContainer}>
         <h1>Projects</h1>
-        <LinkButton to="/project/new" text="Criar Projeto" />
+        <LinkButton to="/project/new" text="New Project" />
       </div>
       <div>
         <Message type='success' message={projectMessage}/>

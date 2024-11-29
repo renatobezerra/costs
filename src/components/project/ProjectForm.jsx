@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import Input from "../form/Input";
+import Label from "../form/Label";
 import Select from "../form/Select";
 import SubmitButton from "../form/SubmitButton";
 import styles from "./ProjectForm.module.css";
 
-function ProjectForm({ btnText, handleSubmit, projectData }) {
+
+function ProjectForm({ btnSave, btnBack, handleSubmit, projectData }) {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const [project, setProject] = useState(projectData ?? {});
+  const [project, setProject] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:5000/categories", {
@@ -22,6 +26,10 @@ function ProjectForm({ btnText, handleSubmit, projectData }) {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    setProject(projectData);
+  }, [projectData])
 
   function submit(e) {
     e.preventDefault();
@@ -42,8 +50,18 @@ function ProjectForm({ btnText, handleSubmit, projectData }) {
     });
   }
 
+  function back(e) {
+    e.preventDefault();
+    navigate(-1);
+  }
+
   return (
     <form onSubmit={submit} className={styles.form}>
+      {
+        !!projectData?.id && (
+          <Label text="Cod" value={projectData.id} />
+        )
+      }
       <Input
         type="text"
         text="Nome do Projeto"
@@ -68,7 +86,19 @@ function ProjectForm({ btnText, handleSubmit, projectData }) {
         handleOnChange={handleSelect}
         value={project?.category?.id ?? ""}
       />
-      <SubmitButton name="projectSubmit" text={btnText} />
+      {
+        !!projectData?.id && (
+          <Label text="Cost" value={projectData?.cost ?? 0} />
+        )
+      }
+      <div className={ styles.actions }>
+        <SubmitButton name="projectSubmit" text={btnSave} />
+        {
+          btnBack && (
+            <button className={ styles.back } onClick={back}>{btnBack}</button>
+          )
+        }
+      </div>
     </form>
   );
 }
