@@ -1,3 +1,4 @@
+import { parse, v4 as uuidv4  } from 'uuid';
 import { useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import styles from './ServiceList.module.css';
@@ -23,6 +24,7 @@ function ServiceList({ projectData }) {
     }
 
     if(projectData?.services) projectData.services = [];
+    service.id = uuidv4();
     service.cost = parseFloat(service.cost);
     setServices([...services, service]);
     setService({});
