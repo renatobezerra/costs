@@ -11,7 +11,6 @@ function Message({ message = '', type='success' }) {
     setFadeOut(false);
 
     const fadeOutTimer = setTimeout(() => {
-
       setFadeOut(true);
     }, 4000);
 
@@ -23,7 +22,6 @@ function Message({ message = '', type='success' }) {
       clearTimeout(fadeOutTimer);
       clearTimeout(timer);
     }
-
   }, [message]);
 
   if(!visible) return null;
